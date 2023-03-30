@@ -1,0 +1,22 @@
+{
+	"FLOWCHART_COLOR_SCHEME": {
+		"STANDARD_STATE": {
+			"SCRIPT": "orange",
+			"XPLORA": "lightgreen",
+			"XPLOIT": "lightblue",
+			"EVALUE": "pink"
+		},
+
+		"ACTIVE_STATE": {
+			"SCRIPT": "brown",
+			"XPLORA": "green",
+			"XPLOIT": "blue",
+			"EVALUE": "red"
+		}
+	},
+
+	"INITIALIZATION_PARAMETERS": {
+		"initialState": "START"
+	}
+
+}

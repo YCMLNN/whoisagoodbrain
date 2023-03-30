@@ -1,0 +1,38 @@
+const flowchartNodes: FlowchartNode[] = [
+    { key: "START", color: "orange" },
+    { key: "XPLORA_FIND_ARUCO_SHELF", color: "pink" },
+    { key: "XPLOIT_MOVE_TOWARDS_SHELF", color: "lightblue" },
+    { key: "XPLORA_DETERMINE_SHELF_OCCUPANCY", color: "pink" },
+    { key: "EVALUE_IS_OBJECTIVE_BOX_PRESENT", color: "lightgreen" },
+    { key: "XPLOIT_MOVE_TOWARDS_OBJECTIVE_BOX", color: "lightblue" },
+    { key: "XPLORA_OBJECTIVE_BOX_POSE_ESTIMATION", color: "pink" },
+    { key: "XPLOIT_GRASP_OBJECTIVE_BOX", color: "lightblue" },
+    { key: "EVALUE_IS_SELF_STORAGE_AVAILABLE", color: "lightgreen" },
+    { key: "XPLOIT_PLACE_GRASPED_BOX_IN_SELFSTORAGE", color: "lightblue" },
+    { key: "XPLOIT_MOVE_TOWARDS_OBJECTIVE_AGV", color: "lightblue" },
+    { key: "XPLOIT_PLACE_GRASPED_BOX_ON_OBJECTIVE_AGV", color: "lightblue" },
+    { key: "EVALUE_IS_SELF_STORAGE_EMPTY", color: "lightgreen" },
+    { key: "XPLOIT_GRASP_BOX_FROM_SELFSTORAGE", color: "lightblue" },
+    { key: "END", color: "orange" }
+];
+
+const flowchartEdges: FlowchartEdge[] = [
+    { from: "START", to: "XPLORA_FIND_ARUCO_SHELF" },
+    { from: "XPLORA_FIND_ARUCO_SHELF", to: "XPLOIT_MOVE_TOWARDS_SHELF" },
+    { from: "XPLOIT_MOVE_TOWARDS_SHELF", to: "XPLORA_DETERMINE_SHELF_OCCUPANCY" },
+    { from: "XPLORA_DETERMINE_SHELF_OCCUPANCY", to: "EVALUE_IS_OBJECTIVE_BOX_PRESENT" },
+    { from: "EVALUE_IS_OBJECTIVE_BOX_PRESENT", to: "END" },
+    { from: "EVALUE_IS_OBJECTIVE_BOX_PRESENT", to: "XPLOIT_MOVE_TOWARDS_OBJECTIVE_BOX" },
+    { from: "XPLOIT_MOVE_TOWARDS_OBJECTIVE_BOX", to: "XPLORA_OBJECTIVE_BOX_POSE_ESTIMATION" },
+    { from: "XPLORA_OBJECTIVE_BOX_POSE_ESTIMATION", to: "XPLOIT_GRASP_OBJECTIVE_BOX" },
+    { from: "XPLOIT_GRASP_OBJECTIVE_BOX", to: "EVALUE_IS_SELF_STORAGE_AVAILABLE" },
+    { from: "EVALUE_IS_SELF_STORAGE_AVAILABLE", to: "XPLOIT_MOVE_TOWARDS_OBJECTIVE_AGV" },
+    { from: "EVALUE_IS_SELF_STORAGE_AVAILABLE", to: "XPLOIT_PLACE_GRASPED_BOX_IN_SELFSTORAGE" },
+    { from: "XPLOIT_PLACE_GRASPED_BOX_IN_SELFSTORAGE", to: "XPLORA_DETERMINE_SHELF_OCCUPANCY" },
+    { from: "XPLOIT_MOVE_TOWARDS_OBJECTIVE_AGV", to: "XPLOIT_PLACE_GRASPED_BOX_ON_OBJECTIVE_AGV" },
+    { from: "XPLOIT_PLACE_GRASPED_BOX_ON_OBJECTIVE_AGV", to: "EVALUE_IS_SELF_STORAGE_EMPTY" },
+    { from: "EVALUE_IS_SELF_STORAGE_EMPTY", to: "XPLOIT_GRASP_BOX_FROM_SELFSTORAGE" },
+    { from: "EVALUE_IS_SELF_STORAGE_EMPTY", to: "END" },
+    { from: "XPLOIT_GRASP_BOX_FROM_SELFSTORAGE", to: "XPLOIT_PLACE_GRASPED_BOX_ON_OBJECTIVE_AGV" }
+
+];

@@ -1,0 +1,170 @@
+{
+	"START": {
+		"ID": 0,
+		"name": "START",
+		"stateType": "SCRIPT",
+		"textTitle": "Start",
+		"textLabel": "",
+		"stateFunction": "samplefunc",
+		"nextState": {
+			"1": "XPLORA_FIND_ARUCO_SHELF"
+		}
+	},
+	"XPLORA_FIND_ARUCO_SHELF": {
+		"ID": 1,
+		"name": "XPLORA_FIND_ARUCO_SHELF",
+		"stateType": "XPLORA",
+		"textTitle": "EXPLORATION",
+		"textLabel": "Localize shelves with ArUco markers",
+		"stateFunction": "samplefunc",
+		"nextState": {
+			"1": "XPLOIT_MOVE_TOWARDS_SHELF"
+		}
+	},
+	"XPLOIT_MOVE_TOWARDS_SHELF": {
+		"ID": 2,
+		"name": "XPLOIT_MOVE_TOWARDS_SHELF",
+		"stateType": "XPLOIT",
+		"textTitle": "EXPLOITATION",
+		"textLabel": "Move towards objective shelf to have full overview",
+		"stateFunction": "samplefunc",
+		"nextState": {
+			"1": "XPLORA_DETERMINE_SHELF_OCCUPANCY"
+		}
+	},
+	"XPLORA_DETERMINE_SHELF_OCCUPANCY": {
+		"ID": 3,
+		"name": "XPLORA_DETERMINE_SHELF_OCCUPANCY",
+		"stateType": "XPLORA",
+		"textTitle": "EXPLORATION",
+		"textLabel": "Evaluate shelf slots occupancy by containers",
+		"stateFunction": "samplefunc",
+		"nextState": {
+			"1": "EVALUE_IS_OBJECTIVE_BOX_PRESENT"
+		}
+	},
+	"EVALUE_IS_OBJECTIVE_BOX_PRESENT": {
+		"ID": 4,
+		"name": "EVALUE_IS_OBJECTIVE_BOX_PRESENT",
+		"stateType": "EVALUE",
+		"textTitle": "EVALUATION",
+		"textLabel": "Is objective container present in the shelf?",
+		"stateFunction": "samplefunc",
+		"nextState": {
+			"0": "END",
+			"1": "XPLOIT_MOVE_TOWARDS_OBJECTIVE_BOX"
+		}
+	},
+	"XPLOIT_MOVE_TOWARDS_OBJECTIVE_BOX": {
+		"ID": 5,
+		"name": "XPLOIT_MOVE_TOWARDS_OBJECTIVE_BOX",
+		"stateType": "XPLOIT",
+		"textTitle": "EXPLOITATION",
+		"textLabel": "Move towards objective container location",
+		"stateFunction": "samplefunc",
+		"nextState": {
+			"1": "XPLORA_OBJECTIVE_BOX_POSE_ESTIMATION"
+		}
+	},
+	"XPLORA_OBJECTIVE_BOX_POSE_ESTIMATION": {
+		"ID": 6,
+		"name": "XPLORA_OBJECTIVE_BOX_POSE_ESTIMATION",
+		"stateType": "XPLORA",
+		"textTitle": "EXPLORATION",
+		"textLabel": "Red-Dim pose estimation for objective container",
+		"stateFunction": "samplefunc",
+		"nextState": {
+			"1": "XPLOIT_GRASP_OBJECTIVE_BOX"
+		}
+	},
+	"XPLOIT_GRASP_OBJECTIVE_BOX": {
+		"ID": 7,
+		"name": "XPLOIT_GRASP_OBJECTIVE_BOX",
+		"stateType": "XPLOIT",
+		"textTitle": "EXPLOITATION",
+		"textLabel": "Grasp objective container",
+		"stateFunction": "samplefunc",
+		"nextState": {
+			"1": "EVALUE_IS_SELF_STORAGE_AVAILABLE"
+		}
+	},
+	"EVALUE_IS_SELF_STORAGE_AVAILABLE": {
+		"ID": 8,
+		"name": "EVALUE_IS_SELF_STORAGE_AVAILABLE",
+		"stateType": "EVALUE",
+		"textTitle": "EVALUATION",
+		"textLabel": "Available slots in self storage?",
+		"stateFunction": "samplefunc2",
+		"nextState": {
+			"0": "XPLOIT_MOVE_TOWARDS_OBJECTIVE_AGV",
+			"1": "XPLOIT_PLACE_GRASPED_BOX_IN_SELFSTORAGE"
+		}
+	},
+	"XPLOIT_PLACE_GRASPED_BOX_IN_SELFSTORAGE": {
+		"ID": 9,
+		"name": "XPLOIT_PLACE_GRASPED_BOX_IN_SELFSTORAGE",
+		"stateType": "XPLOIT",
+		"textTitle": "EXPLOITATION",
+		"textLabel": "Place grasped container into self-storage",
+		"stateFunction": "samplefunc",
+		"nextState": {
+			"1": "XPLORA_DETERMINE_SHELF_OCCUPANCY"
+		}
+	},
+	"XPLOIT_MOVE_TOWARDS_OBJECTIVE_AGV": {
+		"ID": 10,
+		"name": "XPLOIT_MOVE_TOWARDS_OBJECTIVE_AGV",
+		"stateType": "XPLOIT",
+		"textTitle": "EXPLOITATION",
+		"textLabel": "Move towards AGV",
+		"stateFunction": "samplefunc",
+		"nextState": {
+			"1": "XPLOIT_PLACE_GRASPED_BOX_ON_OBJECTIVE_AGV"
+		}
+	},
+	"XPLOIT_PLACE_GRASPED_BOX_ON_OBJECTIVE_AGV": {
+		"ID": 11,
+		"name": "XPLOIT_PLACE_GRASPED_BOX_ON_OBJECTIVE_AGV",
+		"stateType": "XPLOIT",
+		"textTitle": "EXPLOITATION",
+		"textLabel": "Place grasped container on AGV",
+		"stateFunction": "samplefunc",
+		"nextState": {
+			"1": "EVALUE_IS_SELF_STORAGE_EMPTY"
+		}
+	},
+	"EVALUE_IS_SELF_STORAGE_EMPTY": {
+		"ID": 12,
+		"name": "EVALUE_IS_SELF_STORAGE_EMPTY",
+		"stateType": "EVALUE",
+		"textTitle": "EVALUATION",
+		"textLabel": "Is self storage empty?",
+		"stateFunction": "samplefunc",
+		"nextState": {
+			"0": "XPLOIT_GRASP_BOX_FROM_SELFSTORAGE",
+			"1": "END"
+		}
+	},
+	"XPLOIT_GRASP_BOX_FROM_SELFSTORAGE": {
+		"ID": 13,
+		"name": "XPLOIT_GRASP_BOX_FROM_SELFSTORAGE",
+		"stateType": "XPLOIT",
+		"textTitle": "EXPLOITATION",
+		"textLabel": "Grasp container from self storage",
+		"stateFunction": "samplefunc",
+		"nextState": {
+			"1": "XPLOIT_PLACE_GRASPED_BOX_ON_OBJECTIVE_AGV"
+		}
+	},
+	"END": {
+		"ID": 99,
+		"name": "END",
+		"stateType": "SCRIPT",
+		"textTitle": "End",
+		"textLabel": "",
+		"stateFunction": "samplefunc2",
+		"nextState": {
+			"1": "START"
+		}
+	}
+}
