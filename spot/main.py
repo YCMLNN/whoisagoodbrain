@@ -1,12 +1,16 @@
+import json
+import paho.mqtt.client as mqtt
+import threading
+from src.skills import *
+from src.variables import *
 from src.mqtt_broker import *
 from src.state_machine import *
 from src.generic import *
-import json
 
 ### SCRIPT ###
 
-state_client = MQTT_Topic(state_topic)
-SPOT_settings_client = MQTT_Topic(SPOT_settings_topic)
+state_client = MQTT_Speaker(state_topic)
+SPOT_settings_client = MQTT_Speaker(SPOT_settings_topic)
 
 # # Open the JSON file
 # with open('db.json', 'r') as f:

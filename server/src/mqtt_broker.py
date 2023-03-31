@@ -1,5 +1,6 @@
 import subprocess
 import paho.mqtt.client as mqtt
+from variables import *
 
 ### METHODS ###
 
@@ -20,8 +21,26 @@ class MQTT_Topic():
         self.client.on_disconnect = self.on_disconnect
 
     def on_message_callback(self, client, userdata, message):
-        print(message.topic + " - " + str(message.payload.decode("utf-8")))
-        pass
+        print(message.topic) #+ " - " + str(message.payload.decode()), .decode("utf-8")
+        # print(message.payload)
+        #print("MESSAGE LENGTH: ", len(message.payload.decode("utf-8")))
+        #print("JSON PROBLEMS")
+        myjson = json.loads(message.payload)
+        print(type(myjson))
+        #print("UEEEEEEEEEEEE")
+        #print(type(myjson))
+        if "commandID" in myjson.keys():
+            #print("UE BELLO")
+            #print("COMMAND ID: ", myjson["commandID"], "MESSAGE: ", myjson["message"])
+            # print(myjson["command"])
+            print(type(myjson["commandID"]))
+            print(type(json.loads(myjson["message"])))
+            commandID = myjson["commandID"]
+            if commandID in command_mapping.keys():
+                decoded_message = json.loads(myjson["message"])
+                command_mapping[commandID](self, decoded_message)
+        #received_msg = json.loads(str(message.payload))
+        #print("RECEIVED MESSAGE: " + str(received_msg))
 
     def on_disconnect(client, userdata, rc):
         print("Disconnected from broker with result code:", rc)
@@ -41,9 +60,3 @@ class MQTT_Topic():
 
 ### PARAMETERS ###
 
-### MQTT TOPICS ###
-state_topic = "STATE_TPC"
-FLWC_settings_topic = "FLWC_SETTINGS_TPC"
-SPOT_settings_topic = "SPOT_SETTINGS_TPC"
-FLWC_buffer_topic = "FLWC_BUFFER_TPC"
-SPOT_buffer_topic = "SPOT_BUFFER_TPC"
